@@ -8,12 +8,12 @@ dotenv.config();
 
 connectDB();
 
-
 const app = express();
 const PORT = process.env.PORT || 8001;
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:3000", "http://192.168.82.52:3000"],
+    credentials: true,
   }),
 );
 app.use(express.json());
@@ -21,7 +21,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
-
 
 app.use("/api/auth", authRoutes);
 

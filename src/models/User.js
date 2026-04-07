@@ -34,17 +34,6 @@ const userSchema = new mongoose.Schema(
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
 
-    scores: [
-      {
-        quizId: { type: mongoose.Schema.Types.ObjectId, ref: "Question" },
-        score: { type: Number, default: 0 },
-        date: { type: Date, default: Date.now },
-      },
-    ],
-    completedQuizzes: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Question" },
-    ],
-    avatar: { type: String },
   },
   { timestamps: true },
 );

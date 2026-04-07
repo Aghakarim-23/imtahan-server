@@ -75,11 +75,11 @@ export const login = async (req, res) => {
         .json({ message: "Hesab tapılmadı. Zəhmət olmasa emaili yoxlayın" });
     }
 
-    if (!user.isVerified) {
+/*     if (!user.isVerified) {
       return res
         .status(400)
         .json({ message: "Emailinizi təsdiqləyin ki, daxil ola biləsiniz" });
-    }
+    } */
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -92,6 +92,8 @@ export const login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" },
     );
+
+
 
     res.json({
       message: "Uğurlu giriş!",
